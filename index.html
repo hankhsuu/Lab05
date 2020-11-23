@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<html>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>PWAConf</title>
     <link rel="stylesheet" href="./styles.css" />
 
     <link rel="icon" type="image/png" href="./img/icons/favicon.png" />
@@ -21,72 +19,201 @@
     <meta name="mobile-web-app-status-bar-style" content="black" />
     <meta name="mobile-web-app-title" content="PWAConf" />
     <link rel="manifest" href="./manifest.json">
-  </head>
+    <meta charset="utf-8">
+    
+    <title>Hank's Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type = "text/javascript"></script>
+    <script type="text/javascript">
+        alert("歡迎來到我的主頁！");
+        function isLoad() { 
+            if(typeof(Storage)=="undefined"){
+                alert("Sorry!!Web Storage can't use!");        
+            }
+            else{       
+                btn_save.addEventListener("click", saveToLocalStorage);
+                btn_load.addEventListener("click", loadFromLocalStorage); 
+            }
+        }
+        function saveToLocalStorage(){
+            localStorage.username = inputname.value;
+        }
 
-  <body>
-    <header><h1>PWAConf</h1></header>
+        function loadFromLocalStorage(){        
+            show_LocalStorage.innerHTML= localStorage.username+"~您好 歡迎來到我的題目區😁😁😁😁!";
+        }
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#Q1").fadeToggle();
+                $("#btn1").hide();
+            });
+            $("#btn2").click(function(){
+                $("#Q2").fadeToggle();
+                $("#btn2").hide();
+            });
+            $("#btn3").click(function(){
+                $("#Q3").slideToggle();
+                $("#btn3").hide();
+            });
+            $("#btn4").click(function(){
+                $("#Q4").fadeToggle();
+                $("#btn4").hide();
+            });
+            $("#btn5").click(function(){
+                $("#Q5").fadeToggle();
+                $("#btn5").hide();
+            });
+            $("#btn6").click(function(){
+                $("#Q6").slideToggle();
+                $("#btn6").hide();
+            });
+            $("#haha1").click(function(){
+                alert("快看題目!😠😠😠😠")
+            });
+            $("#haha2").click(function(){
+                alert("不要再點我了😡")
+            });
 
-    <nav>
-      <a href="#speakers">Speakers</a> <a href="#schedule">Schedule</a>
-      <a href="#code-of-conduct">Code of conduct</a>
-    </nav>
+        });
+    </script>
 
-    <div class="alert" role="alert" hidden>
-      Your browser does not support ServiceWorker. The app will not be available
-      offline.
+    <style type="text/css">
+        body{
+            color: black;
+            margin: 0px,padding:0;
+            font-family:Papyrus, Arial,sans-serif,黑軟正黑體;
+        }
+        a:link{color:black;}
+        a:visited:{color: black border:0px;}
+        a:active:{color:black;}
+        a:hover{border: 1px white solid;text-decoration: none}
+
+        #container {
+            color: white;
+            font-family: Consolas;
+            position: relative;
+            position: left;
+            text-align: left;
+            width: 500px;
+            height: 500px;
+            padding: 100px 61.65px 155px 62px;
+            margin: 0px auto;
+            background:gray;
+        }
+        button{
+            font-family:monospace,微軟正黑體;
+        }
+    </style>
+</head>
+
+<body onload="isLoad()" BgColor=" #ECFFFF">
+    <marquee onMouseOver="this.stop()" onMouseOut="this.start()" style="margin:0px;opacity:1;" scrollamount="10"  bgcolor="white" noshade width="100%">Practice Makes Perfect!</marquee>
+    <div>
+        <center>
+            <header>
+                <img src="https://www.techapple.com/wp-content/uploads/2018/03/tenor_1.gif" weight="50" height="50" id ="haha1" style="float: left; "><h1 >UVA Problems <img src="https://o.aolcdn.com/images/dar/5845cadfecd996e0372f/527b7047de14763c8c96a676503aaaa7aef33371/aHR0cDovL28uYW9sY2RuLmNvbS9oc3Mvc3RvcmFnZS9taWRhcy9kZWIxMzA2ODVjNjIyMGUyNjkxODMwNGI2MTE5ZGM2MS8yMDE2ODgzNDQvNDg3MGZjZjJmODY0MDk3MTAwYmUwNjJlZTUzYzk5MTEuanBn" weight="50" height="50" id ="haha2" style="float: right;"></h1>
+            </header>
+        </center>
     </div>
-
-    <main>
-      <p>
-        Welcome to PWAConf, the premier made-up PWA conference in the world! The
-        conference is held <b>September 13-14</b> in sunny Santa Cruz, CA.
-      </p>
-
-      <p>
-        The conference is a single day, single track event focused on building
-        kick-ass user experiences on the web.
-      </p>
-
-      <p>
-        Learn how to build this app yourself by
-        <a href="https://vaadin.com/tutorials/learn-pwas">doing the tutorial</a
-        >.
-      </p>
-
-      <h2 id="speakers">Speakers</h2>
-      <div class="speakers"><div class="loader" hidden>Loading...</div></div>
-
-      <h2 id="schedule">Schedule</h2>
-
-      <p>All the presentations will be held in the main auditorium.</p>
-      <div class="schedule"><div class="loader" hidden>Loading...</div></div>
-
-      <h2 id="code-of-conduct">Code of conduct</h2>
-      <p>
-        All attendees are required to follow the
-        <a href="http://confcodeofconduct.com/">code of conduct</a>. Be nice to
-        everyone or get kicked out.
-      </p>
-    </main>
-    <footer>
-      <p>
-        This is not a real conference app. This is a PWA tutorial you can find
-        on
-        <a href="https://vaadin.com/tutorials/learn-pwas"
-          >vaadin.com/tutorials/learn-pwas</a
-        >.
-      </p>
-      <p>
-        Created by
-        <a href="https://twitter.com/marcushellberg">@marcushellberg</a>, the
-        source code is available on
-        <a href="https://github.com/vaadin-learning-center/pwa-tutorial-basic"
-          >GitHub.</a
-        >
-        Speaker images and names are created with
-        <a href="https://randomuser.me/">randomuser.me</a>.
-      </p>
-    </footer>
-    <script src="./app.js"></script>
-  </body>
+    請輸入名字 : <input type="text" id="inputname" value=""><br/>
+    <div id ="show_LocalStorage"></div><br/>
+    <button id="btn_save">儲存</button>
+    <button id="btn_load">點我!</button>
+    <div >
+        <h3>這裡有兩題，請您練習看看唷!(上面的圖片可以點點看ㄛ!)
+            <marquee direction="down" width="125" height="30" behavior="alternate">
+              <marquee behavior="alternate">
+                φ(゜▽゜*)♪
+            </marquee>
+        </marquee></h3>
+    </div>
+    <div id="container" style="float: left;">
+        <a style="font-size:40px; color:white" href="https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=36" target="_blank" >3N+1(按我看題目)</a><br/>
+        <button id="btn1">點我看題意</button>
+        <button id="btn2">點我看題解</button>
+        <button id="btn3">點我看程式碼</button>
+        <br/>
+        <div id="Q1" style="display: none">
+            題意：
+            若某數n為2的倍數，則n除以2；若為奇數，則將其乘以3再加1。做一次計算cycle length就加1。最後到n=1時結束。給定i,j且0&lt;i,j&lt;10000,請問i與j中的所有數的cycle length最長為多少?
+        </div>
+        <br/>
+        <div id="Q2" style="display: none">
+            題解：
+            設一個max，將i與j中每個數字的cycle length都算一遍，每做一次都與max做比較，若其大於max就將max更新，記得若i>j則須將i與j數字交換。
+        </div>
+        <br/>
+        <div id="Q3" style="display: none">
+            <pre>
+            #include &lt;bits/stdc++.h&gt;
+            using namespace std;
+            int main(){
+                int i,j;
+                while(cin>>i>>j){
+                    cout&lt;&lt;i&lt;&lt;" "&lt;&lt;j&lt;&lt;" ";
+                    if(i>j)swap(i,j);
+                    int maxx=0;
+                    while(i<=j){
+                        int n =i;
+                        int l = 1;
+                        while(n!=1){
+                            if(n%2==0){
+                                n/=2;
+                                l++;
+                                continue;
+                            }
+                            n = 3*n+1;
+                            l++;
+                        }
+                        maxx = max(maxx,l);
+                        i++;
+                    }
+                    cout&lt;&lt;maxx&lt;&lt;endl;
+                }
+            }
+</pre>
+</div>
+</div>
+<div id="container" style="float: right;">
+    <a style="font-size:40px; color:white" href="https://onlinejudge.org/index.php?option=onlinejudge&Itemid=8&category=19&page=show_problem&problem=1724" target="_blank">Odd Sum(按我看題目)</a><br/>
+    <button id="btn4">點我看題意</button>
+    <button id="btn5">點我看題解</button>
+    <button id="btn6">點我看程式碼</button>
+    <br/>
+    <div id="Q4" style="display: none">
+        題意： 給定一個T和兩個數字a與b，T是test cases且0≤a≤b≤100。可以求出[a,b]中所有奇數的總和嗎?
+    </div>
+    <br/>
+    <div id="Q5" style="display: none"> 
+        題解： 設一個sum初始值為0，把a到b中所有數字跑一遍，若為奇數(mod2為1)就加到sum中，最後輸出case與sum就好!
+    </div>
+    <br/>
+    <pre id="Q6" style="display: none">
+    #include &lt;bits/stdc++.h&gt;
+    using namespace std;
+    int main(){
+        int t,a,b;
+        cin>>t;
+        for(int i=1;i<=t;i++){
+            cin>>a>>b;
+            int sum=0;
+            for(int j=a;j<=b;j++){
+                if(j%2==1)
+                sum+=j;
+            }
+            cout<<"Case "&lt;&lt;i&lt;&lt;": "&lt;&lt;sum&lt;&lt;end;
+        }
+    }
+</pre>
+</div>
+<footer>離開前可以留下你的意見唷~</footer>
+<a id ="link" href="mailto:hank891008@gmail.com?subject=我的意見">意見回饋😮😮</a>
+<br>
+<a href="https://www.techapple.com/wp-content/uploads/2018/03/tenor_1.gif" target="_blank">圖片來源1</a>
+<a href="https://o.aolcdn.com/images/dar/5845cadfecd996e0372f/527b7047de14763c8c96a676503aaaa7aef33371/aHR0cDovL28uYW9sY2RuLmNvbS9oc3Mvc3RvcmFnZS9taWRhcy9kZWIxMzA2ODVjNjIyMGUyNjkxODMwNGI2MTE5ZGM2MS8yMDE2ODgzNDQvNDg3MGZjZjJmODY0MDk3MTAwYmUwNjJlZTUzYzk5MTEuanBn" target="_blank">圖片來源2</a>
+<a id="gotop" href="#" align="right" style="float: right;">
+    <span >⬆︎TOP</span>
+</a>
+<marquee onMouseOver="this.stop()" onMouseOut="this.start()" style="margin:0px;opacity:1;" scrollamount="10"  bgcolor="white" noshade width="100%">It Is Not Our Abilities That Show What We Truly Are, It Is Our Choices.</marquee>
+<script src="./app.js"></script>
+</body>
 </html>
